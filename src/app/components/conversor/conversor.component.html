@@ -1,0 +1,37 @@
+<div class="container mt-3 centrar">
+	<div class="row">
+		<div class="col-lg-12">
+			<div class="mb-3">
+			  <label for="cantidad" class="form-label">Ingrese cantidad</label>
+			  <input type="number" class="form-control  form-control-lg" id="cantidad" placeholder="Ingrese Cantidad" [(ngModel)]="cantidad" (input)="convertir()">
+</div>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-lg-6">
+			<label for="escoger" class="form-label">Seleccione su moneda de inicio</label>
+			<select class="form-select form-select-lg" aria-label=".form-select-sm example" id="escoger" [(ngModel)]="inicio" (change)="convertir()">
+			  <option selected>Seleccione su moneda</option>
+			  <option  *ngFor ="let moneda of monedas; let i = index">{{moneda}}</option>
+			  
+			</select>
+		</div>
+		<div class="col-lg-6">
+			<label for="destino" class="form-label">Seleccione su moneda destino</label>
+			<select class="form-select form-select-lg" aria-label=".form-select-sm example" id="destino" [(ngModel)]="destino" (change)="convertir()">
+			  <option selected>Seleccione su moneda</option>
+			  <option *ngFor="let moneda of monedas; let i = index">{{moneda}}</option>
+			</select>
+		</div>
+	</div>
+	<h5 *ngIf="cantidad > 0" class="text-center mt-3">
+		<span class="badge bg-success">{{cantidad}} {{inicio}}</span>
+		<span class="badge bg-secondary">Son</span>
+		<span class="badge bg-success">{{total | number: '0.0-2'}} {{destino}}</span>
+	</h5>
+</div>
+<footer>
+	<div class="d-flex justify-content-center">
+		<h6 class="text-light">Hecho por <a href="https://github.com/madrizr" target="_blank">Madrizr</a></h6>
+	</div>
+</footer>
